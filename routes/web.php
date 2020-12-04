@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,20 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');;
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
-Route::post('/contact/submit', function(){
-    return ok;
-});
-
-Auth::routes();
+Route::post('contact/submit', [ContactController::class,'submit'])->name('contact-form-submit');
 
 
